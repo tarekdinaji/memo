@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <h1 class="text-center mb-5">Dictionary</h1>
+  <div class="row">
+    <% @words.each_with_index do |entry, index| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary"><%= entry.topic %></h5>
+            <button class="btn btn-secondary" type="button" onclick="toggleDetails('details-<%= index %>')">
+              Show Details
+            </button>
+            <div id="details-<%= index %>" class="mt-2" style="display: none;">
+              <h6 class="card-subtitle mb-2 text-muted"><%= entry.answer %></h6>
+              <p class="card-text"><%= entry.example %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function toggleDetails(id) {
+    const element = document.getElementById(id);
+    if (element.style.display === 'none') {
+      element.style.display = 'block';
+    } else {
+      element.style.display = 'none';
+    }
+  }
+</script>
